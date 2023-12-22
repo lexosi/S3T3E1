@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import s3t3e1.GardenShop.application.port.out.GardenShopRepository;
+import s3t3e1.GardenShop.application.service.CreateGardenShopService;
 import s3t3e1.GardenShop.application.utilities.Input_sc;
 import s3t3e1.GardenShop.domain.Decoration;
 import s3t3e1.GardenShop.domain.Flower;
@@ -77,6 +78,7 @@ public class Menu {
 		
 		byte prodTypeOption;
 		ProductType prodType;
+		Product product;
 		double price, height;
 		String name, color;
 		int quantity;
@@ -84,7 +86,7 @@ public class Menu {
 		boolean material; // Boolean - Materials material ??
 		String mat;
 		
-		prodTypeOption = Input_sc.enterIntByte("Which type of product do you want to add to the shop:\n"
+		prodTypeOption = Input_sc.enterByte("Which type of product do you want to add to the shop:\n"
 				+ "1. Tree\n"
 				+ "2. Flower\n"
 				+ "3. Decoration");
@@ -92,31 +94,32 @@ public class Menu {
 		name = Input_sc.enterStr("Enter the name of the product:");
 		quantity = Input_sc.enterInt("Enter the quantity:");  
 		
-		switch(productType) {
+		switch(prodTypeOption) {
 		case 1:
 			prodType = ProductType.TREE;
 			height = Input_sc.enterDouble("Enter tree's height:"); 
 			
-			Product treeProd = new Tree(prodType, price, name, height);
-			gardenShop.setGardenProducts(treeProd);
+			product = new Tree(prodType, price, name, height);
+			gardenShop.setGardenProducts(product);
 			break;
 		case 2:
 			prodType = ProductType.FLOWER;
+//			choseColour(do-while);
 			color = Input_sc.enterStr("Enter the flower's colour\n"
 					+ "(Red, Blue, Green, Pink, Yellow, Orange, Purple):");
 			colour = Colours.valueOf(color.toUpperCase());
 			
-			Product flowerProd = new Flower(prodType, price, name, colour);
-			gardenShop.setGardenProducts(flowerProd);
+			product = new Flower(prodType, price, name, colour);
+			gardenShop.setGardenProducts(product);
 			break;
 		case 3:
 			prodType = ProductType.DECORATION;
-			
-			Product decorationProd = new Decoration(prodType, price, name, material);
-			gardenShop.setGardenProducts(decorationProd);
+//			choseMaterial();
+			product = new Decoration(prodType, price, name, material);
+			gardenShop.setGardenProducts(product);
 		}
 		
-		TxtGardenShopRepository.addProduct(prodType);
+		TxtGardenShopRepository.addProduct(product);
 	}
 
 }

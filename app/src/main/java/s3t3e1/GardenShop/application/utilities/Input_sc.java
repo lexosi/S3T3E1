@@ -46,6 +46,24 @@ static Scanner sc = new Scanner(System.in);
 		return num;
 	} 
 	
+	public static byte enterByte(String msgXuser) {
+		byte bt = 0;
+		boolean isByte = false;
+		
+		do {
+			try {
+				System.out.println(msgXuser);
+				bt = sc.nextByte();
+				isByte = true;
+				return bt;
+			} catch(InputMismatchException e) {
+				System.err.println("Format error");
+			}
+			sc.nextLine();
+		} while(!isByte);
+		return bt;
+	}
+	
 	public static double enterDouble(String msgXuser)  {
 		double dbl = 0.0d;
 		boolean isDouble = false;
