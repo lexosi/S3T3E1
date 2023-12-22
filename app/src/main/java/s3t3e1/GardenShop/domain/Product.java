@@ -6,7 +6,7 @@ import s3t3e1.GardenShop.domain.enums.ProductType;
 
 
 
-abstract class Product {
+public abstract class Product {
 	
 	private int id; 
 	private ProductType prodType; // add prod type
