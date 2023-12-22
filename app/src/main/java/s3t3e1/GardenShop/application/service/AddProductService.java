@@ -21,7 +21,7 @@ public class AddProductService implements AddProduct {
 	
 	@Override
 	public void addProduct(Product product) {
-		GardenShop.
+		// GardenShop.
 		}
 
 

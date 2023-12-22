@@ -16,16 +16,17 @@ import s3t3e1.GardenShop.domain.enums.ProductType;
 import s3t3e1.GardenShop.infrastructure.adapter.repository.TxtGardenShopRepository;
 
 public class Menu {
-	static final GardenShop gardenShop = new GardenShop("Sunshine Garden");
     static List<GardenShop> shops = new ArrayList<GardenShop>();
 //	static List<Product> shopProducts = new ArrayList<Product>();
 	
+	GardenShop gardenShop;
 	CreateGardenShopService service;
 	GardenShopRepository repository;
 //	TxtGardenShopRepository txtGardenRepo;
 //	TxtTicketRepository txtTicketRepo;
 	
 	public Menu() {
+		gardenShop = new GardenShop("Bcn Garden");
 		service = new CreateGardenShopService(repository);
 //		txtGardenRepo = new TxtGardenShopRepository();
 //		txtTicketRepo = new TxtTicketRepository();
