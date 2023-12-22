@@ -1,6 +1,7 @@
 package s3t3e1.GardenShop.application.service;
 
 import s3t3e1.GardenShop.application.port.in.RemoveProduct;
+import s3t3e1.GardenShop.domain.Product;
 import s3t3e1.GardenShop.domain.enums.ProductType;
 import s3t3e1.GardenShop.infrastructure.adapter.repository.TxtGardenShopRepository;
 
@@ -13,9 +14,8 @@ public class RemoveProductService implements RemoveProduct {
 	}
 
 	@Override
-	public void removeProduct(ProductType prodType) {
-		
-		repository.delete(product);
-		
+	public void removeProduct(Product product) {
+		repository.delete(product);	
 	}
+
 }
