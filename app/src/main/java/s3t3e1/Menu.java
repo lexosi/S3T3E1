@@ -23,7 +23,7 @@ public class Menu {
 //	TxtGardenShopRepository txtGardenRepo;
 //	TxtTicketRepository txtTicketRepo;
 	
-	public App() {
+	public Menu() {
 		gardenShop = new GardenShop("Bcn Garden");
 		service = new CreateGardenShopService(repository);
 //		txtGardenRepo = new TxtGardenShopRepository();
