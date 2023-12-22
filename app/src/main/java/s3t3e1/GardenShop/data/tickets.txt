@@ -1,0 +1,15 @@
+GardenShop
+Sale num: 1
+Quantity		Description
+2		Rose
+3		Tulip
+Subtotal: 50€
+Total price(with 21% tax): 60.5€
+
+GardenShop
+Sale num: 2
+Quantity		Description
+1		Sunflower
+4		Daisy
+Subtotal: 45€
+Total price(with 21% tax): 54.45€
