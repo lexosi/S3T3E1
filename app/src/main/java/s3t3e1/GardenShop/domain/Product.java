@@ -49,7 +49,7 @@ abstract class Product {
 	@Override
 	public String toString() {
 		return ("ID: " + id +
-				"\nProduct Type: " + ProdType +
+				"\nProduct Type: " + ProductType +
 				"\nName: " + name +
 				"\nPrice" + price);
 	}

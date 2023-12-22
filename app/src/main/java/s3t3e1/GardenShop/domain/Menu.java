@@ -1,4 +1,4 @@
-package s3t3e1;
+package s3t3e1.GardenShop.domain;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,10 +6,6 @@ import java.util.List;
 import s3t3e1.GardenShop.application.port.out.GardenShopRepository;
 import s3t3e1.GardenShop.application.service.CreateGardenShopService;
 import s3t3e1.GardenShop.application.utilities.Input_sc;
-import s3t3e1.GardenShop.domain.Decoration;
-import s3t3e1.GardenShop.domain.Flower;
-import s3t3e1.GardenShop.domain.GardenShop;
-import s3t3e1.GardenShop.domain.Tree;
 import s3t3e1.GardenShop.domain.enums.Colours;
 import s3t3e1.GardenShop.domain.enums.ProductType;
 import s3t3e1.GardenShop.infrastructure.adapter.repository.TxtGardenShopRepository;
