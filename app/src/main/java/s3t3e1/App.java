@@ -3,7 +3,7 @@
  */
 package s3t3e1;
 
-import s3t3e1.GardenShop.domain.Menu;
+import s3t3e1.GardenShop.infrastructure.cli.Menu;
 
 public class App {
     public String getGreeting() {
