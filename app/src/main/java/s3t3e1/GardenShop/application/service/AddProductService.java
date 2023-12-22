@@ -23,12 +23,8 @@ public class AddProductService implements AddProduct {
 		GardenShop.
 		}
 
-	@Override
-	public void addProduct(ProductType prodType) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'addProduct'");
-	}
-		/*
+
+		
 	@Override
 	public void addProduct(ProductType prodType) {
 		String prod = prodType.toString();
@@ -38,7 +34,7 @@ public class AddProductService implements AddProduct {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+		/*
 		String variable;
 		switch(prodType) {
 		case T:
