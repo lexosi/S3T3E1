@@ -16,17 +16,16 @@ import s3t3e1.GardenShop.domain.enums.ProductType;
 import s3t3e1.GardenShop.infrastructure.adapter.repository.TxtGardenShopRepository;
 
 public class Menu {
+	static final GardenShop gardenShop = new GardenShop("Sunshine Garden");
     static List<GardenShop> shops = new ArrayList<GardenShop>();
 //	static List<Product> shopProducts = new ArrayList<Product>();
 	
-	GardenShop gardenShop;
 	CreateGardenShopService service;
 	GardenShopRepository repository;
 //	TxtGardenShopRepository txtGardenRepo;
 //	TxtTicketRepository txtTicketRepo;
 	
 	public Menu() {
-		gardenShop = new GardenShop("Bcn Garden");
 		service = new CreateGardenShopService(repository);
 //		txtGardenRepo = new TxtGardenShopRepository();
 //		txtTicketRepo = new TxtTicketRepository();
@@ -104,7 +103,7 @@ public class Menu {
 			break;
 		case 2:
 			prodType = ProductType.FLOWER;
-			choseColour(do-while);
+//			choseColour(do-while);
 			color = Input_sc.enterStr("Enter the flower's colour\n"
 					+ "(Red, Blue, Green, Pink, Yellow, Orange, Purple):");
 			colour = Colours.valueOf(color.toUpperCase());
@@ -114,7 +113,7 @@ public class Menu {
 			break;
 		case 3:
 			prodType = ProductType.DECORATION;
-			choseMaterial();
+//			choseMaterial();
 			product = new Decoration(prodType, price, name, material);
 			gardenShop.setGardenProducts(product);
 		}

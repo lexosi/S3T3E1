@@ -6,6 +6,7 @@ import java.util.HashMap;
 
 import s3t3e1.GardenShop.application.port.in.AddProduct;
 import s3t3e1.GardenShop.domain.GardenShop;
+import s3t3e1.GardenShop.domain.Product;
 import s3t3e1.GardenShop.domain.enums.ProductType;
 import s3t3e1.GardenShop.infrastructure.adapter.repository.TxtGardenShopRepository;
 
