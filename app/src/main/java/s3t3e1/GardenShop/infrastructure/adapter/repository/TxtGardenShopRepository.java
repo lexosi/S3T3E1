@@ -8,6 +8,7 @@ import java.util.Optional;
 import s3t3e1.GardenShop.application.port.in.AddProduct;
 import s3t3e1.GardenShop.application.port.out.GardenShopRepository;
 import s3t3e1.GardenShop.domain.GardenShop;
+import s3t3e1.GardenShop.domain.Product;
 import s3t3e1.GardenShop.domain.enums.ProductType;
 
 public class TxtGardenShopRepository implements AddProduct, GardenShopRepository {
@@ -15,14 +16,20 @@ public class TxtGardenShopRepository implements AddProduct, GardenShopRepository
 	private String filePath = "GardenShop.txt";
 	
 	@Override
-	public void addProduct(ProductType prodType) {
-		String prod = prodType.toString();
+	public void addProduct(Product product) {
+		// TODO Auto-generated method stub
 		
-		try (FileWriter writer = new FileWriter(filePath, true)){
-			writer.write(prod.toString() + "\n");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+	}
+	
+//	@Override
+//	public void addProduct(ProductType prodType) {
+//		String prod = prodType.toString();
+//		
+//		try (FileWriter writer = new FileWriter(filePath, true)){
+//			writer.write(prod.toString() + "\n");
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
 		/*
 		String variable;
 		switch(prodType) {
@@ -63,4 +70,6 @@ public class TxtGardenShopRepository implements AddProduct, GardenShopRepository
 			System.out.println("This shop doesn't exist in our shops' database");
 		}
 	}
+
+	
 }
