@@ -51,7 +51,7 @@ public class TxtGardenShopRepository implements AddProduct, GardenShopRepository
 
 	@Override
 	public GardenShop save(GardenShop gardenShop) {
-		return null;
+		return null; // guardar botiga
 	}
 
 	@Override

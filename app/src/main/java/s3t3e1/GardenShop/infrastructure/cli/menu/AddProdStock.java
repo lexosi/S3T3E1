@@ -43,7 +43,7 @@ public class AddProdStock {
 			break;
 		case 2:
 			prodType = ProductType.FLOWER;
-			color = MenuManagement.chooseColour();
+			color = ChooseOptions.chooseColour();
 			colour = Colours.valueOf(color.toUpperCase());
 			
 			product = new Flower(prodType, price, name, colour);
@@ -51,7 +51,7 @@ public class AddProdStock {
 			break;
 		case 3:
 			prodType = ProductType.DECORATION;
-			material = MenuManagement.chooseMaterial();
+			material = ChooseOptions.chooseMaterial();
 			
 			product = new Decoration(prodType, price, name, material);
 			gardenShop.setGardenProducts(product, quantity);
