@@ -20,7 +20,9 @@ public class TxtGardenShopRepository implements AddProduct, GardenShopRepository
 		// TODO Auto-generated method stub
 		
 	}
-	
+	public void save(Product product) {
+		
+	}
 //	@Override
 //	public void addProduct(ProductType prodType) {
 //		String prod = prodType.toString();
