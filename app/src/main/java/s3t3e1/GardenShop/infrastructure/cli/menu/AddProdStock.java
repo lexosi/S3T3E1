@@ -17,13 +17,12 @@ public class AddProdStock {
 		
 		byte prodTypeOption;
 		ProductType prodType;
-		Product product;
+		Product product = null;
 		double price, height;
 		String name, color;
-		int quantity;
+		int quantity;  
 		Colours colour;
 		boolean material; // false(wood) true(plastic)
-		String mat;
 		
 		prodTypeOption = Input_sc.enterByte("Which type of product do you want to add to the shop:\n"
 				+ "1. Tree\n"

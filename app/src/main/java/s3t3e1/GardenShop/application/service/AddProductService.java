@@ -18,19 +18,20 @@ public class AddProductService implements AddProduct {
 	public AddProductService(TxtGardenShopRepository repository) {
 		this.repository = repository;
 	}
-	
+	  
 	@Override
 	public void addProduct(Product product) {
-		
-		String prod = prodType.toString();
-		
+
+		String prod = product.toString();
+
 		try (FileWriter writer = new FileWriter(filePath, true)){
 			writer.write(prod.toString() + "\n");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
 		repository.save(product); 
-		}
-	
-	
+	}
+
+
 }

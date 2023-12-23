@@ -13,7 +13,7 @@ public class GardenShop {
 	private String name;
 	private ProductType prodType;
 	private HashMap<Product, Integer> gardenProducts; 
-	private double totalShopStockValue;
+	private double totalShopStockValue;  
 	
 	public GardenShop(String name) {
 		this.shopId = GardenShop.shopIdNext;
