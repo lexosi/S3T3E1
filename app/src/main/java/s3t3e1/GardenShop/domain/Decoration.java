@@ -4,7 +4,7 @@ import s3t3e1.GardenShop.domain.enums.ProductType;
 
 public class Decoration extends Product {
 
-    private boolean material;
+    private boolean material; // false = wood, true = plastic
 
     public Decoration(ProductType prodType, double price, String name, boolean material) {
         super(prodType, price, name);

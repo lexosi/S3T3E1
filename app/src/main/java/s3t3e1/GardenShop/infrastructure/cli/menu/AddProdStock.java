@@ -22,7 +22,7 @@ public class AddProdStock {
 		String name, color;
 		int quantity;
 		Colours colour;
-		boolean material; // Boolean - Materials material ??
+		boolean material; // false(wood) true(plastic)
 		String mat;
 		
 		prodTypeOption = Input_sc.enterByte("Which type of product do you want to add to the shop:\n"
@@ -39,24 +39,25 @@ public class AddProdStock {
 			height = Input_sc.enterDouble("Enter tree's height:"); 
 			
 			product = new Tree(prodType, price, name, height);
-			gardenShop.setGardenProducts(product);
+			gardenShop.setGardenProducts(product, quantity);
 			break;
 		case 2:
 			prodType = ProductType.FLOWER;
-//			choseColour(do-while);
-			color = Input_sc.enterStr("Enter the flower's colour\n"
-					+ "(Red, Blue, Green, Pink, Yellow, Orange, Purple):");
+			color = MenuManagement.chooseColour();
 			colour = Colours.valueOf(color.toUpperCase());
 			
 			product = new Flower(prodType, price, name, colour);
-			gardenShop.setGardenProducts(product);
+			gardenShop.setGardenProducts(product, quantity);
 			break;
 		case 3:
 			prodType = ProductType.DECORATION;
-//			choseMaterial();
+			material = MenuManagement.chooseMaterial();
+			
 			product = new Decoration(prodType, price, name, material);
-			gardenShop.setGardenProducts(product);
+			gardenShop.setGardenProducts(product, quantity);
 		}
+		
+		
 		TxtGardenShopRepository repository = new TxtGardenShopRepository();
 		AddProductService addProductService = new AddProductService(repository);
 		addProductService.addProduct(product);

@@ -5,108 +5,63 @@ import s3t3e1.GardenShop.domain.enums.Colours;
 
 public class MenuManagement {
 
-    public Colours chooseColour() {
-        Colours colour = null;
-        boolean quit = false;
-        do {
-        switch (Input_sc.enterInt("Enter the flower's colour\n" +
-                "1- Red\n" +
-                "2- Blue\n" +
-                "3- Green\n" +
-                "4- Pink\n" +
-                "5- Yellow\n" +
-                "6- Orange\n" +
-                "7- Purple\n")) {
-            case 1:
-                colour = Colours.RED;
-                quit = true;
-                break;
-            case 2:
-                colour = Colours.BLUE;
-                quit = true;
-                break;
-            case 3:
-                colour = Colours.GREEN;
-                quit = true;
-                break;
-            case 4:
-                colour = Colours.PINK;
-                quit = true;
-                break;
-            case 5:
-                colour = Colours.YELLOW;
-                quit = true;
-                break;
-            case 6:
-                colour = Colours.ORANGE;
-                quit = true;
-                break;
-            case 7:
-                colour = Colours.PURPLE;
-                quit = true;
-                break;
-            default:
-                System.out.println("Enter a valid colour");
-        }
+	// Choose Flower colour
+	public static String chooseColour() {
+		
+		String[] colours = {"Red", "Blue", "Green", "Pink", "Yellow", "Orange", "Purple"};
+		
+		boolean quit = false;
+		String color = "";
+		
+		do {
+			byte choice = showColours();
+			
+			if(choice >= 1 && choice <= 7){
+				color = colours[choice -1];
+			} else {
+		        System.out.println("Enter a valid number between 1 and 7");
+			}
+			
+		} while(!quit);
+	
+		return color;
+	}
+	
+	
+	public static byte showColours(){
+		byte coloursOption = Input_sc.enterByte("Choose the flower's colour:\n"
+				+ "1. Red\n"
+				+ "2. Blue\n"
+				+ "3. Green\n"
+				+ "4. Pink\n"
+				+ "5. Yellow\n"
+				+ "6. Orange\n"
+				+ "7. Purple");
+		
+		return coloursOption;
+	}
+	
+	// Choose Decoration material
+	public static boolean chooseMaterial() {
 
-        } while(!quit);
+		boolean material = false;
+		byte materialsOption = showMaterials();
 
-        return colour;
-    }
+		if(materialsOption < 1 || materialsOption > 2) {
+			System.out.println("Enter a valid number between 1 and 2");
+			return material; // O devuelve un valor predeterminado o lanza una excepción
+		}
 
-    public boolean chooseMaterial() {
-        boolean quit = false;
-        int material;
-        do {
-            material = Input_sc.enterInt("Choose the decoration material:\n"
-                    + "1: Plastic\n"
-                    + "2: Wood");
-            if ((material == 1) || (material == 2)) {
-                quit = true;
-            } else {
-                System.out.println("Enter a valid input");
-            }
-        } while (!quit);
-
-        return material == 1;
-
-    }
+		return materialsOption == 2;
+	}
 
 
-    
-	 public Colours chooseColour() {
-	        boolean quit = false;
-	        do {
-	        String color = Input_sc.enterStr("Enter the flower's colour\n"
-	                + "(Red, Blue, Green, Pink, Yellow, Orange, Purple):");
-	        if(){ //aqui tendria que validar si el String es un color valido
-	            quit = true;
-	        }
-	        else {
-	            System.out.println("Enter a valid colour");
-	        }
-	        } while(!quit);
-	        Colours colour = valueOf(color.toUpperCase());
+	public static byte showMaterials() {
+		byte materialsOption = Input_sc.enterByte("Choose the decoration's material:\n"
+				+ "1. Wood\n"
+				+ "2. Plastic");
+		return materialsOption;
+	}
 
-	        return colour;
-	    }
-
-	    public boolean chooseMaterial() {
-	        boolean quit = false;
-	        int material;
-	        do {
-	            material = Input_sc.enterInt("Choose the decoration material:\n"
-	                    + "1: Plastic\n"
-	                    + "2: Wood");
-	            if ((material == 1) || (material == 2)) {
-	                quit = true;
-	            } else {
-	                System.out.println("Enter a valid input");
-	            }
-	        } while (!quit);
-
-	        return material == 1;
-
-	    }
 
 }

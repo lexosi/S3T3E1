@@ -42,6 +42,7 @@ public class Menu {
 	
 	public void menuStart() {
 		boolean quit = false;
+		
 		do {
 			switch(showMenu()) {
 			case 0 -> quit = true;
@@ -59,7 +60,7 @@ public class Menu {
 	}
 		
 	
-	public static int showMenu() {
+	public static byte showMenu() {
 		byte option = Input_sc.enterByte("GARDEN SHOP APP MENU\n"
 				+ "Choose one of the following options (enter its number)\n"
 				+ "1. Add Tree, Flower or Decoration to the shop's stock\n"

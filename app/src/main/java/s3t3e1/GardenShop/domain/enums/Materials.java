@@ -1,6 +1,6 @@
 package s3t3e1.GardenShop.domain.enums;
 
-public enum Material {
+public enum Materials {
 
 	WOOD,
 	PLASTIC;
