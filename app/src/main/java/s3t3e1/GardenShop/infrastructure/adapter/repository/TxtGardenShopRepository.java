@@ -6,24 +6,23 @@ import java.util.List;
 import java.util.Optional;
 
 import s3t3e1.GardenShop.application.port.in.AddProduct;
+import s3t3e1.GardenShop.application.port.in.RemoveProduct;
 import s3t3e1.GardenShop.application.port.out.GardenShopRepository;
 import s3t3e1.GardenShop.domain.GardenShop;
 import s3t3e1.GardenShop.domain.Product;
 import s3t3e1.GardenShop.domain.enums.ProductType;
 
-public class TxtGardenShopRepository implements AddProduct, GardenShopRepository {
+public class TxtGardenShopRepository implements AddProduct, RemoveProduct, GardenShopRepository {
 
 	private String filePath = "GardenShop.txt";
 	
+	/* ADD PRODUCT */
 	@Override
 	public void addProduct(Product product) {
 		// TODO Auto-generated method stub
 		
 	}
-	public void save(Product product) {
-		
-	}
-//	@Override
+	@Override
 //	public void addProduct(ProductType prodType) {
 //		String prod = prodType.toString();
 //		
@@ -47,8 +46,20 @@ public class TxtGardenShopRepository implements AddProduct, GardenShopRepository
 			writer.write(variable.toString() + "\n");
 		}
 		*/
+//	}
+	
+	public void save(Product product) {
+		
 	}
-
+	
+	/* REMOVE PRODUCT */
+	@Override
+	public void removeProduct(Product product) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	/* GARDEN SHOP REPOSITORY */
 	@Override
 	public GardenShop save(GardenShop gardenShop) {
 		return null; // guardar botiga
@@ -72,6 +83,8 @@ public class TxtGardenShopRepository implements AddProduct, GardenShopRepository
 			System.out.println("This shop doesn't exist in our shops' database");
 		}
 	}
+
+	
 
 	
 }

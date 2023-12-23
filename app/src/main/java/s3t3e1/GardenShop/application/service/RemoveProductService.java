@@ -15,7 +15,10 @@ public class RemoveProductService implements RemoveProduct {
 
 	@Override
 	public void removeProduct(Product product) {
-		repository.delete(product);	
+		
+		
+		
+		repository.removeProduct(product);	
 	}
 
 }

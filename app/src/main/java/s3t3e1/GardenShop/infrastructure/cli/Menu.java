@@ -47,7 +47,7 @@ public class Menu {
 			switch(showMenu()) {
 			case 0 -> quit = true;
 			case 1 -> AddProdStock.addProductToStock(gardenShop);
-			case 2 -> RemoveProdStock.removeProductFromStock();
+			case 2 -> RemoveProdStock.removeProductFromStock(gardenShop);
 //			case 3 -> ;
 			case 4 -> ;
 			case 5 -> gardenShop.calculateTotalShopStockValue();
