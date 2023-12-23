@@ -21,13 +21,7 @@ public class AddProductService implements AddProduct {
 	
 	@Override
 	public void addProduct(Product product) {
-		// GardenShop.
-		}
-
-
 		
-	@Override
-	public void addProduct(ProductType prodType) {
 		String prod = prodType.toString();
 		
 		try (FileWriter writer = new FileWriter(filePath, true)){
@@ -35,24 +29,8 @@ public class AddProductService implements AddProduct {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		/*
-		String variable;
-		switch(prodType) {
-		case T:
-			variable = "Tree";
-			break;
-		case F:
-			break;
-		case D:
-			break;
+		repository.save(product); 
 		}
-		try(FileWriter writer = new FileWriter(filePath, true)) {
-			writer.write(variable.toString() + "\n");
-		}
-		*/
-		
-		repository.save(product);
-	}
 	
 	
 }
