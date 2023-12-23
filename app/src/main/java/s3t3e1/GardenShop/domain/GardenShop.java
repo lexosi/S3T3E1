@@ -12,14 +12,14 @@ public class GardenShop {
 	private static int shopIdNext;
 	private String name;
 	private ProductType prodType;
-	private List<Product> gardenProducts; //stock ?? HashMap<Quantity, Product>
+	private HashMap<Product, Integer> gardenProducts; 
 	private double totalShopStockValue;
 	
 	public GardenShop(String name) {
 		this.shopId = GardenShop.shopIdNext;
 		GardenShop.shopIdNext++;
 		this.name = name;
-		this.gardenProducts = new ArrayList<Product>();
+		this.gardenProducts = new HashMap<Product, Integer>();
 	}
 	
 	public int shopId() {
@@ -31,7 +31,7 @@ public class GardenShop {
 	public ProductType getProdType() {
 		return prodType;
 	}
-	public List<Product> getGardenProducts() {
+	public HashMap<Product, Integer> getGardenProducts() {
 		return gardenProducts;
 	}
 	public double getTotalShopStockValue() {
@@ -45,13 +45,18 @@ public class GardenShop {
 	public void setProductType(ProductType prodType) {
 		this.prodType = prodType;
 	}
-	public void setGardenProducts(Product product) {
-		this.gardenProducts.add(product);
+	public void setGardenProducts(Product product, int quantity) {
+		this.gardenProducts.put(product, quantity);
 	}
 	public void setTotalShopStockValue(double totalShopStockValue) {
 		this.totalShopStockValue = totalShopStockValue;
 	}
 
+	//methods
+	public int getProductQuantity(Product product) {
+		return this.gardenProducts.getOrDefault(product, 0);
+	}
+	
 	public void calculateTotalShopStockValue(){
 		double totalShopValue = 0;
 		if(!gardenProducts.isEmpty()) {

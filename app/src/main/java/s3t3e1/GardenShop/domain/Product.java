@@ -4,12 +4,10 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import s3t3e1.GardenShop.domain.enums.ProductType;
 
-
-
 public abstract class Product {
 	
 	private int id; 
-	private ProductType prodType; // add prod type
+	private ProductType prodType; 
 	private double price;
 	private String name;
 	private static AtomicInteger ai = new AtomicInteger(0);
