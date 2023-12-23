@@ -20,7 +20,7 @@ public class AddProdStock {
 		Product product = null;
 		double price, height;
 		String name, color;
-		int quantity;
+		int quantity;  
 		Colours colour;
 		boolean material; // false(wood) true(plastic)
 		

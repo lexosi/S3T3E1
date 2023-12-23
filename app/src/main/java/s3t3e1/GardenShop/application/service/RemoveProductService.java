@@ -8,7 +8,7 @@ import s3t3e1.GardenShop.infrastructure.adapter.repository.TxtGardenShopReposito
 public class RemoveProductService implements RemoveProduct {
 
 	private final TxtGardenShopRepository repository;
-	
+	 
 	public RemoveProductService(TxtGardenShopRepository repository) {
 		this.repository = repository;
 	}

@@ -19,7 +19,7 @@ public class RemoveProdStock {
 		
 		prodFound = findProdById(gardenShop, prodId);
 		gardenShop.getGardenProducts().remove(prodFound, quantity);
-		
+		 
 		
 		
 		
