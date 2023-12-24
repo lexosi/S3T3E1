@@ -1,3 +1,4 @@
+package s3t3e1;
 import org.junit.jupiter.api.Test;
 
 import s3t3e1.GardenShop.domain.GardenShop;
