@@ -19,4 +19,8 @@ public enum ProductType {
 	public String toString() {
 		return this.productType.toLowerCase();
 	}
+
+	public static ProductType getProductType(String string) {
+		return null;
+	}
 }

@@ -10,44 +10,23 @@ public class MenuManagement {
 
 	//Show the stock of all products
 	public static void showAllStock(GardenShop gardenShop) {
-//		Set<Product> allStockProducts = gardenShop.findKeys();
-//		List<Product> treeStock = new ArrayList<Product>();
-//		List<Product> flowerStock = new ArrayList<Product>();
-//		List<Product> decorationStock = new ArrayList<Product>();
-		ProductType prodType;
-		
-		// Print all products with mixed prodType
-		gardenShop.findKeys().forEach(System.out::println);
-//		products -> prodType 
-		gardenShop.findKeys().stream()
-			.forEach(p-> p.getProdType()); // 
-		
-		List<Product> sortedStock = new ArrayList<Product>();
-		gardenShop.findKeys().stream()		
-			.forEach(p -> p.getProdType().TREE);
-		List<Product>allStockProducts = gardenShop.getProducts();
-		(prodType)
-		
-//		public GardenShop findByName(List<GardenShop> shops, String name) {
-//			GardenShop shop = shops.stream()
-//					.filter(s -> s.getName().equals(name))
-//					.findFirst()
-//					.orElse(null);
-//			return shop.get();
-////		}
-		
-//		Iterator<Product> it = allStockProducts.iterator();
-//		while(it.hasNext()) {
-//			prodType = it.next().getProdType();
-//			if(prodType == ProductType.TREE) {
-//				treeStock.add(it.next());
-//			} else if(prodType == ProductType.FLOWER) {
-//				flowerStock.add(it.next());
-//			} else {
-//				decorationStock.add(it.next());
-//			}
-		//		}
+		List<Product> allStockProducts = gardenShop.findKeys();
 
+		List<Product> treeStock = allStockProducts.stream()
+				.filter(p -> p.getProdType() == ProductType.TREE)
+				.toList();
+
+		List<Product> flowerStock = allStockProducts.stream()
+				.filter(p -> p.getProdType() == ProductType.FLOWER)
+				.toList();
+
+		List<Product> decorationStock = allStockProducts.stream()
+				.filter(p -> p.getProdType() == ProductType.DECORATION)
+				.toList();
+
+		System.out.println("Tree Stock: " + treeStock);
+		System.out.println("Flower Stock: " + flowerStock);
+		System.out.println("Decoration Stock: " + decorationStock);
 	}
 
 	//Show stock quantities
