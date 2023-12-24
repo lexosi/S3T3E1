@@ -65,15 +65,7 @@ public class Ticket {
 		setTotalSaleAmount(totalAmountWTax);
 		return totalAmountWTax;
 	}
-	public void showTicketHistory() {
-		if(!registeredSales.isEmpty()) {
-			System.out.println("Ticket history:");
-			registeredSales.forEach(System.out::println);
-		} else {
-			System.out.println("There is no ticket in our database yet");
-		}
-		
-	}
+	
 	@Override
 	public String toString() {
 		return  GardenShop.getName() + "\n"

@@ -4,6 +4,7 @@ import java.util.*;
 
 import s3t3e1.GardenShop.domain.GardenShop;
 import s3t3e1.GardenShop.domain.Product;
+import s3t3e1.GardenShop.domain.Ticket;
 import s3t3e1.GardenShop.domain.enums.ProductType;
 
 public class MenuManagement {
@@ -58,4 +59,15 @@ public class MenuManagement {
 		System.out.println("The Total Amount of the " + gardenShop.getName() + " is " + totalAmountSales + "€");
 	}
 
+	// Show old sale's tickets
+	public static void showOldTickets(Ticket ticket) {
+		
+		if(!ticket.getRegisteredSales().isEmpty()) {
+			System.out.println("Ticket history:");
+			ticket.getRegisteredSales().forEach(System.out::println);
+		} else {
+			System.out.println("There is no ticket in our database yet");
+		}
+		
+	}
 }
