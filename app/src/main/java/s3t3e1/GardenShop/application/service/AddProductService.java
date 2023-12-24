@@ -19,7 +19,7 @@ public class AddProductService implements AddProduct {
 	public AddProductService(ProductRepository repository) {
 		this.repository = repository;
 	}
-	  
+
 	@Override
 	public void addProduct(Product product) {
 
@@ -31,7 +31,7 @@ public class AddProductService implements AddProduct {
 			e.printStackTrace();
 		}
 		
-		repository.save(product); 
+		repository.save(product);
 	}
 
 
