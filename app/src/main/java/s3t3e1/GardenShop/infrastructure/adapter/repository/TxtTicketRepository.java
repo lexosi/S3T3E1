@@ -45,12 +45,13 @@ public class TxtTicketRepository implements TicketRepository {
 	 * }
 	 */
 
-	public void save(Ticket ticket) {
+	public Ticket save(Ticket ticket) {
 		try (FileWriter writer = new FileWriter(filePath, true)) {
 			writer.write(ticket.toString() + "\n");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		return ticket;
 	}
 	
 	public TxtTicketRepository(String filePath) {
