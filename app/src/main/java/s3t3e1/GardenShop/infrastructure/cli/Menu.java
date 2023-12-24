@@ -15,6 +15,7 @@ import s3t3e1.GardenShop.domain.enums.Colours;
 import s3t3e1.GardenShop.domain.enums.ProductType;
 import s3t3e1.GardenShop.infrastructure.adapter.repository.TxtGardenShopRepository;
 import s3t3e1.GardenShop.infrastructure.cli.menu.AddProdStock;
+import s3t3e1.GardenShop.infrastructure.cli.menu.MenuManagement;
 import s3t3e1.GardenShop.infrastructure.cli.menu.RemoveProdStock;
 
 public class Menu {
@@ -48,12 +49,12 @@ public class Menu {
 			case 0 -> quit = true;
 			case 1 -> AddProdStock.addProductToStock(gardenShop);
 			case 2 -> RemoveProdStock.removeProductFromStock(gardenShop);
-//			case 3 -> ;
-			case 4 -> ;
+			case 3 -> MenuManagement.showAllStock(gardenShop);
+			case 4 -> MenuManagement.showStockQuantities(gardenShop);
 			case 5 -> gardenShop.calculateTotalShopStockValue();
 			case 6 -> ;
-//			case 7 -> ;
-//			case 8 -> ;
+			case 7 -> ;
+			case 8 -> MenuManagement.showTotalAmountFromSales();
 			default -> System.out.println("Error! Please enter a number between 0 and 8");
 			}
 		} while(!quit);
