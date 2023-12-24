@@ -13,23 +13,35 @@ public class TxtTicketRepository implements TicketRepository {
 
 	private static String ticketFile = dataPath + "tickets.txt";
 	
+	private String filePath = "data/tickets.txt";
+
 	public TxtTicketRepository() {
 		// Add constructor logic here if needed
 	}
 	
-	@Override
+	/*
+	 * @Override
+	 * public void save(Ticket ticket) {
+	 * File newTicket = new File(ticketFile);
+	 * try {
+	 * if(!newTicket.exists()) {
+	 * newTicket.createNewFile();
+	 * System.out.println("New tickets file created");
+	 * }
+	 * 
+	 * FileWriter fw = new FileWriter(newTicket, true);
+	 * fw.write(ticket.toString());
+	 * fw.write(""); // write for each line saved in the hashmap ticketLines
+	 * fw.close();
+	 * } catch (IOException e) {
+	 * e.printStackTrace();
+	 * }
+	 * }
+	 */
+
 	public void save(Ticket ticket) {
-		File newTicket = new File(ticketFile);
-		try {
-			if(!newTicket.exists()) {
-				newTicket.createNewFile();
-				System.out.println("New tickets file created");
-			}
-			
-			FileWriter fw = new FileWriter(newTicket, true);
-			fw.write(ticket.toString());
-			fw.write(""); // write for each line saved in the hashmap ticketLines
-			fw.close();
+		try (FileWriter writer = new FileWriter(filePath, true)) {
+			writer.write(ticket.toString() + "\n");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
