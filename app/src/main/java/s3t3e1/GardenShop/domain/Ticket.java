@@ -10,6 +10,7 @@ public class Ticket {
 	private int ticketID;
 	private static int ticketIDNext;
 	private double totalAmount;
+	private double totalSaleAmount;
 	List<Product> products;
 	List<Ticket> registeredSales = new ArrayList<Ticket>(); // guardar id del ticket
 //	private(String int?? LocalDateTime) ticketDate;
@@ -35,7 +36,9 @@ public class Ticket {
 	public List<Ticket> getRegisteredSales(){
 		return this.registeredSales;
 	}
-	
+	public void setTotalSaleAmount(double totalSaleAmount) {
+		this.totalSaleAmount = totalSaleAmount;
+	}
 	public void setTotalAmount(double totalAmount) {
 		this.totalAmount = totalAmount;
 	}
@@ -52,13 +55,13 @@ public class Ticket {
 		return subtotal;
 	}
 	
-	public double calculateTotalAmountWTax() {
+	public void calculateTotalAmountWTax() {
 		double subtotal = getTotalAmount();	
 		double tax = 0.21d;
 		double totalAmountWTax = 0;
 		
 		totalAmountWTax = subtotal + (subtotal * tax); 
-		return totalAmountWTax;
+		setTotalSaleAmount(totalAmountWTax);
 	}
 	
 	@Override

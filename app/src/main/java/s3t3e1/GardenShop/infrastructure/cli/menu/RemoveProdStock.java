@@ -22,8 +22,10 @@ public class RemoveProdStock {
 		indexProdFound = findProdById(gardenShop, prodId);
 		
 		if(indexProdFound != -1) {
-//			prodFound = gardenShop. //pass the index of the product
-			gardenShop.getGardenProducts().remove(prodFound, quantity);
+			gardenShop.findKeys(gardenShop.findKeys().indexOf(indexProdFound));
+			prodFound = ;
+					//pass the index of the product
+			gardenShop.getGardenProducts().remove(gardenShop.findKeys().indexOf(indexProdFound), quantity);
 		}
 		
 		
@@ -35,27 +37,15 @@ public class RemoveProdStock {
 	}
 	
 	public static int findProdById(GardenShop gardenShop, int prodId) {
+		products product ->id
 		
-		Set<Product> allStockProducts = new HashSet<Product>();
-		int prodIndex = -1;
-		int actualId, prodIdInStockHM;
+		gardenShop.findKeys().stream().filter(p -> p.getId() == prodId);
 		
-		allStockProducts = gardenShop.findKeys();
-		
-//		int prodIdInStockHM = gardenShop.getProductId(product);
-//		Iterator<Product> it = allStockProducts.iterator();
-//		if(prodId == prodIdInStockHM) {
-//			
-//		}
-		
-		Iterator<Product> it = allStockProducts.iterator();
-		while(it.hasNext()) {
-//			System.out.println(it.next());
-			actualId = it.next().getId();
-			if(actualId == prodId) {
-				prodIndex =  ; // get index of the product
-			}
-		}
-		return prodIndex;
+		 for (Product product : gardenShop.findKeys()) {
+		        if (product.getId() == prodId) {
+		            return gardenShop.findKeys().indexOf(product);
+		        }
+		    }
+		    return -1;
 	}
 }
