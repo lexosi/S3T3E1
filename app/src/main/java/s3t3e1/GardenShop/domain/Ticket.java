@@ -16,10 +16,11 @@ public class Ticket {
 //	private(String int?? LocalDateTime) ticketDate;
 	HashMap<Integer, Product> ticketLines;	// guardar les linies per imprimir el ticket
 	
-	public Ticket(int ticketID, double totalAmount) {
+	public Ticket(int ticketID, double totalAmount, double totalSaleAmount) {
 		this.ticketID = Ticket.ticketIDNext;
 		Ticket.ticketIDNext++;
 		this.totalAmount = totalAmount;
+		this.totalSaleAmount = totalSaleAmount;
 		this.products = new ArrayList<Product>();
 		this.ticketLines = new HashMap<Integer, Product>();
 	}
@@ -55,19 +56,22 @@ public class Ticket {
 		return subtotal;
 	}
 	
-	public void calculateTotalAmountWTax() {
+	public double calculateTotalAmountWTax() {
 		double subtotal = getTotalAmount();	
 		double tax = 0.21d;
 		double totalAmountWTax = 0;
 		
 		totalAmountWTax = subtotal + (subtotal * tax); 
 		setTotalSaleAmount(totalAmountWTax);
+		return totalAmountWTax;
 	}
-	
+	public void showTicketHistory() {
+		registeredSales.forEach(System.out::println);
+	}
 	@Override
 	public String toString() {
 		return  GardenShop.getName() + "\n"
-				+ "Sale num: " + ticketID + "\n"
+				+ "Sale num: " + this.ticketID + "\n"
 				+ "Quantity		Description\n"
 				+ this.ticketLines + "\n"
 				+ "Subtotal: " + this.calculateTotalAmount() + "€\n"

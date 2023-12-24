@@ -19,23 +19,33 @@ import s3t3e1.GardenShop.infrastructure.cli.menu.MenuManagement;
 import s3t3e1.GardenShop.infrastructure.cli.menu.RemoveProdStock;
 
 public class Menu {
-    static List<GardenShop> shops = new ArrayList<GardenShop>();
-//	static List<Product> shopProducts = new ArrayList<Product>();
 	
-	GardenShop gardenShop;
+    static List<GardenShop> shops = new ArrayList<GardenShop>();
+    GardenShop gardenShop;
 	CreateGardenShopService service;
 	GardenShopRepository repository;
 //	TxtGardenShopRepository txtGardenRepo;
 //	TxtTicketRepository txtTicketRepo;
 	
 	public Menu() {
-		gardenShop = new GardenShop("Bcn Garden");
+//		gardenShop = new GardenShop("Bcn Garden");
 		service = new CreateGardenShopService(repository);
 //		txtGardenRepo = new TxtGardenShopRepository();
 //		txtTicketRepo = new TxtTicketRepository();
 	}
 	  
 	//menu
+	public void startApp() {
+		//service.createGardenShop(name);
+		String name;
+		if(shops.isEmpty()) {
+			name = Input_sc.enterStr("Enter the name of your Garden Shop to start the app");
+			gardenShop = new GardenShop(name);
+			shops.add(gardenShop);
+		}
+		System.out.println("Welcome to the Garden Shop App Menu");
+	}
+	//menu 2nd screen
 	public void start() {
 		//service.createGardenShop(name);
 		menuStart();
@@ -52,7 +62,8 @@ public class Menu {
 			case 3 -> MenuManagement.showAllStock(gardenShop);
 			case 4 -> MenuManagement.showStockQuantities(gardenShop);
 			case 5 -> MenuManagement.calculateTotalShopStockValue(gardenShop);
-			case 7 -> ;
+			case 6 -> CreateInvoice.createTicket();
+			case 7 -> Ticket.showTicketHistory();
 			case 8 -> MenuManagement.showTotalAmountFromSales(gardenShop);
 			default -> System.out.println("Error! Please enter a number between 0 and 8");
 			}
