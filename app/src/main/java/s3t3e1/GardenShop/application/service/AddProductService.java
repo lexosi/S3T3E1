@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.HashMap;
 
 import s3t3e1.GardenShop.application.port.in.AddProduct;
+import s3t3e1.GardenShop.application.port.out.ProductRepository;
 import s3t3e1.GardenShop.domain.GardenShop;
 import s3t3e1.GardenShop.domain.Product;
 import s3t3e1.GardenShop.domain.enums.ProductType;
@@ -12,13 +13,13 @@ import s3t3e1.GardenShop.infrastructure.adapter.repository.TxtGardenShopReposito
 
 public class AddProductService implements AddProduct {
 
-	private final TxtGardenShopRepository repository;
+	private final ProductRepository repository;
 	private String filePath = "GardenShop.txt";
 
-	public AddProductService(TxtGardenShopRepository repository) {
+	public AddProductService(ProductRepository repository) {
 		this.repository = repository;
 	}
-	  
+
 	@Override
 	public void addProduct(Product product) {
 
@@ -30,7 +31,7 @@ public class AddProductService implements AddProduct {
 			e.printStackTrace();
 		}
 		
-		repository.save(poduct);
+		repository.save(product);
 	}
 
 
