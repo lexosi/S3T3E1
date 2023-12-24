@@ -51,10 +51,9 @@ public class Menu {
 			case 2 -> RemoveProdStock.removeProductFromStock(gardenShop);
 			case 3 -> MenuManagement.showAllStock(gardenShop);
 			case 4 -> MenuManagement.showStockQuantities(gardenShop);
-			case 5 -> gardenShop.calculateTotalShopStockValue();
-			case 6 -> ;
+			case 5 -> MenuManagement.calculateTotalShopStockValue(gardenShop);
 			case 7 -> ;
-			case 8 -> MenuManagement.showTotalAmountFromSales();
+			case 8 -> MenuManagement.showTotalAmountFromSales(gardenShop);
 			default -> System.out.println("Error! Please enter a number between 0 and 8");
 			}
 		} while(!quit);
