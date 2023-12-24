@@ -85,5 +85,9 @@ public class GardenShop {
 	public String toString() {
 		return "Shop: " + this.name + "with a value of " + this.totalShopStockValue + "€";
 	}
-	
+
+	public GardenShop get() {
+		return null;
+	}
+
 }

@@ -64,7 +64,7 @@ public class TxtGardenShopRepository implements AddProduct, GardenShopRepository
 
 @Override
 public GardenShop findByName(List<GardenShop> shops, String name) {
-	Optional<GardenShop> shop = shops.stream()
+	GardenShop shop = shops.stream()
 			.filter(s -> s.getName().equals(name))
 			.findFirst()
 			.orElse(null);
