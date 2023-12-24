@@ -11,11 +11,13 @@ import s3t3e1.GardenShop.domain.Decoration;
 import s3t3e1.GardenShop.domain.Flower;
 import s3t3e1.GardenShop.domain.GardenShop;
 import s3t3e1.GardenShop.domain.Product;
+import s3t3e1.GardenShop.domain.Ticket;
 import s3t3e1.GardenShop.domain.Tree;
 import s3t3e1.GardenShop.domain.enums.Colours;
 import s3t3e1.GardenShop.domain.enums.ProductType;
 import s3t3e1.GardenShop.infrastructure.adapter.repository.TxtGardenShopRepository;
 import s3t3e1.GardenShop.infrastructure.cli.menu.AddProdStock;
+import s3t3e1.GardenShop.infrastructure.cli.menu.CreateInvoice;
 import s3t3e1.GardenShop.infrastructure.cli.menu.MenuManagement;
 import s3t3e1.GardenShop.infrastructure.cli.menu.RemoveProdStock;
 
@@ -23,6 +25,7 @@ public class Menu {
 	
     static List<GardenShop> shops = new ArrayList<GardenShop>();
     GardenShop gardenShop;
+    Ticket ticket;
 	CreateGardenShopService service;
 	GardenShopRepository repository;
 //	TxtGardenShopRepository txtGardenRepo;
@@ -63,8 +66,8 @@ public class Menu {
 			case 3 -> MenuManagement.showAllStock(gardenShop);
 			case 4 -> MenuManagement.showStockQuantities(gardenShop);
 			case 5 -> MenuManagement.calculateTotalShopStockValue(gardenShop);
-			case 6 -> CreateTicket.createTicket(gardenShop);
-			case 7 -> MenuManagement.showOldTickets(gardenShop);
+			case 6 -> CreateInvoice.createInvoice();
+			case 7 -> MenuManagement.showOldTickets(ticket);
 			case 8 -> MenuManagement.showTotalAmountFromSales(gardenShop);
 			default -> System.out.println("Error! Please enter a number between 0 and 8");
 			}
