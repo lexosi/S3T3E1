@@ -15,6 +15,8 @@ import s3t3e1.GardenShop.domain.Ticket;
 
 public class TxtTicketRepository implements TicketRepository {
 
+	private static String dataPath;
+
 	private static String ticketFile = dataPath + "tickets.txt";
 	
 	private String filePath = "data/tickets.txt";
@@ -55,16 +57,9 @@ public class TxtTicketRepository implements TicketRepository {
 		this.filePath = filePath;
 	}
 
-	public void save(Ticket ticket) {
-		try (FileWriter writer = new FileWriter(filePath, true)) {
-			writer.write(ticket.toString() + "\n");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
 
 	public void delete(Ticket ticket) {
-		  List<Ticket> tickets = new ArrayList<>();
+		List<Ticket> tickets = new ArrayList<>();
     File file = new File(filePath);
 
     // Read all tickets into a list
@@ -100,6 +95,10 @@ public class TxtTicketRepository implements TicketRepository {
 	}
 
 
+	private Ticket convertLineToTicket(String line) {
+		return null;
+	}
+
 	@Override
 	public Ticket findTicket(List<Ticket> registeredSales, int tckID) {
 		Optional<Ticket> ticket = registeredSales.stream()
@@ -127,4 +126,4 @@ public class TxtTicketRepository implements TicketRepository {
 
 	
 	}
-	}
+
