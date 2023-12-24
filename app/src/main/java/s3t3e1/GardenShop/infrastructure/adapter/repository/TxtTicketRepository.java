@@ -1,10 +1,14 @@
 package s3t3e1.GardenShop.infrastructure.adapter.repository;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Scanner;
 
 import s3t3e1.GardenShop.application.port.out.TicketRepository;
 import s3t3e1.GardenShop.domain.Ticket;
@@ -47,6 +51,55 @@ public class TxtTicketRepository implements TicketRepository {
 		}
 	}
 	
+	public TxtTicketRepository(String filePath) {
+		this.filePath = filePath;
+	}
+
+	public void save(Ticket ticket) {
+		try (FileWriter writer = new FileWriter(filePath, true)) {
+			writer.write(ticket.toString() + "\n");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void delete(Ticket ticket) {
+		  List<Ticket> tickets = new ArrayList<>();
+    File file = new File(filePath);
+
+    // Read all tickets into a list
+    try (Scanner scanner = new Scanner(file)) {
+        while (scanner.hasNextLine()) {
+            String line = scanner.nextLine();
+            // Assuming you have a method to convert a line of text into a Ticket
+            Ticket t = convertLineToTicket(line);
+            tickets.add(t);
+        }
+    } catch (FileNotFoundException e) {
+        e.printStackTrace();
+    }
+
+    // Remove the ticket from the list
+    tickets.removeIf(t -> t.getTicketID() == ticket.getTicketID());
+
+    // Clear the file
+    try (PrintWriter writer = new PrintWriter(file)) {
+        writer.print("");
+    } catch (FileNotFoundException e) {
+        e.printStackTrace();
+    }
+
+    // Write the remaining tickets back into the file
+    try (FileWriter writer = new FileWriter(filePath, true)) {
+        for (Ticket t : tickets) {
+            writer.write(t.toString() + "\n");
+        }
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+	}
+
+
 	@Override
 	public Ticket findTicket(List<Ticket> registeredSales, int tckID) {
 		Optional<Ticket> ticket = registeredSales.stream()
@@ -72,9 +125,6 @@ public class TxtTicketRepository implements TicketRepository {
 }
 
 
-	@Override
-	public void delete(Ticket ticket) {
-		// TODO Auto-generated method stub
-		
+	
 	}
 	}
