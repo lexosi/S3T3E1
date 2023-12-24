@@ -1,8 +1,6 @@
 package s3t3e1.GardenShop.domain;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 import s3t3e1.GardenShop.domain.enums.ProductType;
 
@@ -52,9 +50,25 @@ public class GardenShop {
 		this.totalShopStockValue = totalShopStockValue;
 	}
 
+	//Methods to get keys and values of the HashMap gardenProducts
+		//Get keys (Product)
+	public Set<Product> findKeys() {
+//		Iterator<Product, Integer> it = gardenProducts.containsKey(getGardenProducts().keySet());
+		Set<Product> findKeys = gardenProducts.keySet();
+		return findKeys;
+	}
+		//Get values (Quantity)
+	public Collection<Integer> findValues() {
+		Collection<Integer> findValues = gardenProducts.values();
+		return findValues;
+	}
+
 	//methods
 	public int getProductQuantity(Product product) {
 		return this.gardenProducts.getOrDefault(product, 0);
+	}
+	public int getProductId(Product product) {
+		return this.gardenProducts.get(product.getId());
 	}
 	
 	public void calculateTotalShopStockValue(){

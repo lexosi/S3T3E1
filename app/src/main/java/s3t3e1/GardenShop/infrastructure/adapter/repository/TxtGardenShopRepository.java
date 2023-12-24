@@ -12,6 +12,7 @@ import s3t3e1.GardenShop.domain.Product;
 import s3t3e1.GardenShop.domain.enums.ProductType;
 
 public class TxtGardenShopRepository implements AddProduct, GardenShopRepository {
+ main
 
 	private String filePath = "GardenShop.txt";
 
