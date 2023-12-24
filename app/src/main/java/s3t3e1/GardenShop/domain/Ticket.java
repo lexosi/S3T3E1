@@ -66,7 +66,13 @@ public class Ticket {
 		return totalAmountWTax;
 	}
 	public void showTicketHistory() {
-		registeredSales.forEach(System.out::println);
+		if(!registeredSales.isEmpty()) {
+			System.out.println("Ticket history:");
+			registeredSales.forEach(System.out::println);
+		} else {
+			System.out.println("There is no ticket in our database yet");
+		}
+		
 	}
 	@Override
 	public String toString() {
