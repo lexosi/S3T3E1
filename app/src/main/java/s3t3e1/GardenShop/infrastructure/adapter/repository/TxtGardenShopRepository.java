@@ -24,12 +24,10 @@ public class TxtGardenShopRepository implements AddProduct, GardenShopRepository
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-	public vo
-
 	}
 
-/
+
+
 //		String prod = prodType.toString();
 //		
 //		try (FileWriter writer = new FileWriter(filePath, true)){
@@ -52,31 +50,37 @@ public class TxtGardenShopRepository implements AddProduct, GardenShopRepository
 			writer.write(variable.toString() + "\n");
 		}
 		*/
-	}
+		// }
 
 	@Override
 	public GardenShop save(GardenShop gardenShop) {
-		return null;
+	try (FileWriter writer = new FileWriter(filePath, true)) {
+		writer.write(gardenShop.toString() + "\n");
+	} catch (IOException e) {
+		e.printStackTrace();
 	}
-
-	@Override
-	public GardenShop findByName(List<GardenShop> shops, String name) {
-		Optional<GardenShop> shop = shops.stream()
-				.filter(s -> s.getName().equals(name))
-				.findFirst()
-				.orElse(null);
-		return shop.get();
-	}
-
-	@Override
-	public void delete(List<GardenShop> shops, GardenShop gardenShop) {
-		GardenShop shop = findByName(shops, gardenShop.getName());
-		if(shop != null) {
-			shops.remove(shop);
-		} else {
-			System.out.println("This shop doesn't exist in our shops' database");
-		}
-	}
-
-	
+	return gardenShop;
 }
+
+@Override
+public GardenShop findByName(List<GardenShop> shops, String name) {
+	Optional<GardenShop> shop = shops.stream()
+			.filter(s -> s.getName().equals(name))
+			.findFirst()
+			.orElse(null);
+	return shop.get();
+}
+
+@Override
+public void delete(List<GardenShop> shops, GardenShop gardenShop) {
+	GardenShop shop = findByName(shops, gardenShop.getName());
+	if (shop != null) {
+		shops.remove(shop);
+		System.out.println("The shop " + shop.getName() + " has been successfully removed from the database.");
+	} else {
+		System.out.println("This shop doesn't exist in our shops' database");
+	}
+}
+
+}
+
