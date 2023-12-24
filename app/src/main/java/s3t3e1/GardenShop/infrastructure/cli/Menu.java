@@ -3,6 +3,7 @@ package s3t3e1.GardenShop.infrastructure.cli;
 import java.util.ArrayList;
 import java.util.List;
 
+import s3t3e1.GardenShop.application.port.in.CreateTicket;
 import s3t3e1.GardenShop.application.port.out.GardenShopRepository;
 import s3t3e1.GardenShop.application.service.CreateGardenShopService;
 import s3t3e1.GardenShop.application.utilities.Input_sc;
@@ -52,7 +53,8 @@ public class Menu {
 			case 3 -> MenuManagement.showAllStock(gardenShop);
 			case 4 -> MenuManagement.showStockQuantities(gardenShop);
 			case 5 -> MenuManagement.calculateTotalShopStockValue(gardenShop);
-			case 7 -> ;
+			case 6 -> CreateTicket.createTicket(gardenShop);
+			case 7 -> MenuManagement.showOldTickets(gardenShop);
 			case 8 -> MenuManagement.showTotalAmountFromSales(gardenShop);
 			default -> System.out.println("Error! Please enter a number between 0 and 8");
 			}

@@ -30,7 +30,7 @@ public class AddProductService implements AddProduct {
 			e.printStackTrace();
 		}
 		
-		repository.save(product); 
+		repository.save(poduct);
 	}
 
 
