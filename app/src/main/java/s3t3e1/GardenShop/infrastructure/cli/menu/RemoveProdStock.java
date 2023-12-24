@@ -11,41 +11,37 @@ import s3t3e1.GardenShop.infrastructure.adapter.repository.TxtGardenShopReposito
 public class RemoveProdStock {
 
 	public static void removeProductFromStock(GardenShop gardenShop) {
-		
+
 		int prodId, quantity, indexProdFound;
 		Product prodFound;
 		Product product = null;
-		
+
 		prodId = Input_sc.enterInt("Enter the ID of the product you want to remove:");
-		quantity = Input_sc.enterInt("Enter how many items of this product you want to remove:"); 
+		quantity = Input_sc.enterInt("Enter how many items of this product you want to remove:");
 
 		indexProdFound = findProdById(gardenShop, prodId);
-		
-		if(indexProdFound != -1) {
-			gardenShop.findKeys(gardenShop.findKeys().indexOf(indexProdFound));
-			prodFound = ;
-					//pass the index of the product
-			gardenShop.getGardenProducts().remove(gardenShop.findKeys().indexOf(indexProdFound), quantity);
+
+		if (indexProdFound != -1) {
+			prodFound = gardenShop.findKeys().get(indexProdFound);
+			gardenShop.getGardenProducts().remove(prodFound, quantity);
 		}
-		
-		
-		
+
 		TxtGardenShopRepository repository = new TxtGardenShopRepository();
 		RemoveProductService removeProductService = new RemoveProductService(repository);
 		removeProductService.removeProduct(product);
-//		TxtGardenShopRepository.removeProduct(product);
+		// TxtGardenShopRepository.removeProduct(product);
 	}
-	
+
 	public static int findProdById(GardenShop gardenShop, int prodId) {
-		products product ->id
-		
+		// products product ->id
+
 		gardenShop.findKeys().stream().filter(p -> p.getId() == prodId);
-		
-		 for (Product product : gardenShop.findKeys()) {
-		        if (product.getId() == prodId) {
-		            return gardenShop.findKeys().indexOf(product);
-		        }
-		    }
-		    return -1;
+
+		for (Product product : gardenShop.findKeys()) {
+			if (product.getId() == prodId) {
+				return gardenShop.findKeys().indexOf(product);
+			}
+		}
+		return -1;
 	}
 }
