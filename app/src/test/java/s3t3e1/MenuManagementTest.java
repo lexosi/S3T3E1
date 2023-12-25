@@ -5,16 +5,11 @@ import s3t3e1.GardenShop.domain.GardenShop;
 import s3t3e1.GardenShop.domain.Product;
 import s3t3e1.GardenShop.domain.enums.ProductType;
 import s3t3e1.GardenShop.infrastructure.cli.menu.MenuManagement;
-
-import s3t3e1.GardenShop.domain.GardenShop;
-
-import s3t3e1.GardenShop.domain.GardenShop;
+import static org.mockito.Mockito.mock;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.AfterEach;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
-
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.Arrays;
