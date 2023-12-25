@@ -30,7 +30,7 @@ public class Decoration extends Product {
     @Override
     public String toString() {
         return (super.toString() +
-                "\nMaterial: " + materialToString());
+                "\nMaterial: " + this.materialToString());
     }
 
 }

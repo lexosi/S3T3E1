@@ -7,6 +7,7 @@ import s3t3e1.GardenShop.application.port.in.CreateTicket;
 import s3t3e1.GardenShop.application.port.out.GardenShopRepository;
 import s3t3e1.GardenShop.application.service.CreateGardenShopService;
 import s3t3e1.GardenShop.application.utilities.Input_sc;
+import s3t3e1.GardenShop.data.StartDB;
 import s3t3e1.GardenShop.domain.Decoration;
 import s3t3e1.GardenShop.domain.Flower;
 import s3t3e1.GardenShop.domain.GardenShop;
@@ -32,6 +33,7 @@ public class Menu {
 //	TxtTicketRepository txtTicketRepo;
 	
 	public Menu() {
+		StartDB.loadData(shops);
 //		gardenShop = new GardenShop("Bcn Garden");
 		service = new CreateGardenShopService(repository);
 //		txtGardenRepo = new TxtGardenShopRepository();

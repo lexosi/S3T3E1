@@ -22,7 +22,7 @@ public class Tree extends Product {
 	@Override
 	public String toString() {
 		return (super.toString() +
-				"\nHeight: " + height);
+				"\nHeight: " + this.height + "m");
 	}
 
 }
