@@ -7,7 +7,6 @@ import s3t3e1.GardenShop.domain.Ticket;
 public interface TicketRepository {
 
 	Ticket save(Ticket ticket);
-
 	Ticket findTicket(List<Ticket> registeredSales, int id);
 	void delete(Ticket ticket);
 	    
