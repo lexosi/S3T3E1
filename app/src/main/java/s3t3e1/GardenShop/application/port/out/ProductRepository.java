@@ -7,5 +7,5 @@ public interface ProductRepository {
 	
 	Product save(Product product);
 	Product findProdById(GardenShop gardenShop, int prodId);
-	void delete();
+	void delete(GardenShop gardenShop, int prodId);
 }

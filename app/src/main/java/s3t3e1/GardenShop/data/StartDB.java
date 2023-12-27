@@ -24,7 +24,7 @@ public class StartDB {
 		gardenSh.setGardenProducts(new Decoration(ProductType.DECORATION, 9.75d, "Pot", true), 4);
 		gardenSh.setGardenProducts(new Decoration(ProductType.DECORATION, 130.95d, "Mini sculpture", false), 3);
 		
-		Ticket ticket1 = new Ticket(1, 43.4d, 52.514d);
+//		Ticket ticket1 = new Ticket(1, 43.4d, 52.514d);
 	}
 	
 	

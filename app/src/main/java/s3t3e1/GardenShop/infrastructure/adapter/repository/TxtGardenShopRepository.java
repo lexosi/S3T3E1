@@ -31,7 +31,7 @@ public class TxtGardenShopRepository implements ProductRepository, GardenShopRep
 	}
 
 	@Override
-	public void delete() {
+	public void delete(GardenShop gardenShop, int prodId) {
 		// TODO Auto-generated method stub
 
 	}
