@@ -7,30 +7,32 @@ import java.util.List;
 
 public class Ticket {
 
-//	private(String int?? LocalDateTime) ticketDate;
+	private String gShName;
+//	private(String/int?? LocalDateTime) ticketDate;
 	private int ticketID;
 	private static int ticketIDNext;
 	List<TcktProdLine> prodLines; // save product lines in ticket
-	private double totalAmount;
-	private double totalSaleAmount;
-	List<Ticket> registeredSales = new ArrayList<Ticket>(); // guardar id del ticket
+	private double totalAmount; // subtotal (sum of all products)
+	private double totalSaleAmount;	// total ticket amount (with tax applied)
 	
-	List<Product> products;
-	HashMap<Integer, Product> ticketLines;	// guardar les linies per imprimir el ticket
+	// Old Tickets history
+	List<Ticket> registeredSales = new ArrayList<Ticket>();  
 	
 	
-	public Ticket(double totalAmount, double totalSaleAmount) {
+	
+	public Ticket(String gShName, List<TcktProdLine> prodLines) {
+		this.gShName = gShName;
 		this.ticketID = Ticket.ticketIDNext;
 		Ticket.ticketIDNext++;
-		this.totalAmount = totalAmount;
-		this.totalSaleAmount = totalSaleAmount;
-		this.products = new ArrayList<Product>();
-		this.ticketLines = new HashMap<Integer, Product>();
-		
 		this.prodLines = new ArrayList<TcktProdLine>();
+		this.totalAmount = 0;
+		this.totalSaleAmount= 0;
 	}
 	
 	
+	public String getGShName() {
+		return this.gShName;
+	}
 	public int getTicketID() {
 		return this.ticketID;
 	}
@@ -43,36 +45,35 @@ public class Ticket {
 	public double totalSaleAmount() {
 		return this.totalSaleAmount;
 	}
-	public List<Product> getProducts() {
-		return this.products;
-	} 
 	public List<Ticket> getRegisteredSales(){
 		return this.registeredSales;
 	}
 	
 	
-	public void setProdLines(List<TcktProdLine> prodLines) {
-		this.prodLines = prodLines;
+	public void setGShName(String gShName) {
+		this.gShName = gShName;
 	}
-	public void setTotalSaleAmount(double totalSaleAmount) {
-		this.totalSaleAmount = totalSaleAmount;
+	public void setProdLines(TcktProdLine tcktProdLine) {
+		this.prodLines.add(tcktProdLine);
 	}
 	public void setTotalAmount(double totalAmount) {
 		this.totalAmount = totalAmount;
 	}
-	public void setRegisteredSales(List<Ticket> registeredSales) {
-		this.registeredSales = registeredSales;
+	public void setTotalSaleAmount(double totalSaleAmount) {
+		this.totalSaleAmount = totalSaleAmount;
+	}
+	public void setRegisteredSales(Ticket ticket) {
+		this.registeredSales.add(ticket);
 	}
 	
 	
-	public void addProd(int prodQuantity, Product product) {
-//		products.add(product.getName(), product.getPrice(), prodQuantity);
-		ticketLines.put(prodQuantity, product);
-//		setTotalAmount(calculateTotalAmount());
+	public void addProdToTicket(int prodQuantity, Product product) {
+		TcktProdLine tcktProdLine = new TcktProdLine(prodQuantity, product);
+		setProdLines(tcktProdLine);
 	}
+	
 	public double calculateTotalAmount() {
 		double subtotal = 0;
-		subtotal = products.stream().mapToDouble(Product::getPrice).sum();
 		subtotal = prodLines.stream().mapToDouble(TcktProdLine::getPriceXunit).sum();
 		setTotalAmount(subtotal);
 		return subtotal;
@@ -88,13 +89,14 @@ public class Ticket {
 		return totalAmountWTax;
 	}
 	
+	
 	@Override
 	public String toString() {
-		return  GardenShop.getName() + "\n"
+		return  this.gShName + "\n"
 				+ "Sale num: " + this.ticketID + "\n"
-				+ "Quantity		Description\n"
-				+ this.ticketLines + "\n"
-				+ "Subtotal: " + this.calculateTotalAmount() + "€\n"
-				+ "Total price(with 21% tax): " + this.calculateTotalAmountWTax() + "€";
+				+ "Quantity\tDescription\tPrice/Unit\tTotal\n"
+				+ this.prodLines + "\n"
+				+ "Subtotal:\t\t\t" + this.calculateTotalAmount() + "€\n"
+				+ "Total price(with 21% tax)\t" + this.calculateTotalAmountWTax() + "€";
 	}
 }
