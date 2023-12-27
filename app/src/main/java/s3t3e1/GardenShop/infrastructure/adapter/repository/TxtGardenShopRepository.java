@@ -17,23 +17,35 @@ public class TxtGardenShopRepository implements ProductRepository, GardenShopRep
 
 	private String filePath = "GardenShop.txt";
 
-	/* PRODUCT REPOSITORY */
+	/* PRODUCT REPOSITORY (shop stock) */
 	@Override
 	public Product save(Product product) {
-		// TODO Auto-generated method stub
-		return null;
+		try(FileWriter writer = new FileWriter(filePath, true)) {
+			writer.write(product.toString() + "\n");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return product;
 	}
 
 	@Override
 	public Product findProdById(GardenShop gardenShop, int prodId) {
-		gardenShop.findKeys().forEach(System.out::println);
-		return null;
+		Product product = gardenShop.findKeys().stream()
+				.filter(p -> p.getId() == prodId)
+				.findFirst()
+				.orElse(null);
+
+		return product;
 	}
 
 	@Override
-	public void delete(GardenShop gardenShop, int prodId) {
-		// TODO Auto-generated method stub
-
+	public void delete(GardenShop gardenShop, int prodId, int quantity) {
+		Product prodFound = findProdById(gardenShop, prodId);
+		if(prodFound != null) {
+			gardenShop.getGardenProducts().remove(prodFound, quantity);
+		} else {
+			System.out.println("Sorry, we can't delete this product. It doesn't exist in our shop's stock");
+		}
 	}
 
 	/* GARDEN SHOP REPOSITORY */
@@ -44,6 +56,7 @@ public class TxtGardenShopRepository implements ProductRepository, GardenShopRep
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
 		return gardenShop;
 	}
 

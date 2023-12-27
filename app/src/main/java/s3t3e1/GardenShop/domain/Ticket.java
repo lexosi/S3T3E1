@@ -11,7 +11,8 @@ public class Ticket {
 //	private(String/int?? LocalDateTime) ticketDate;
 	private int ticketID;
 	private static int ticketIDNext;
-	List<TcktProdLine> prodLines; // save product lines in ticket
+	private TcktProdLine tcktProdLine;
+	List<TcktProdLine> prodLines  = new ArrayList<TcktProdLine>(); // save product lines in ticket
 	private double totalAmount; // subtotal (sum of all products)
 	private double totalSaleAmount;	// total ticket amount (with tax applied)
 	
@@ -19,12 +20,20 @@ public class Ticket {
 	List<Ticket> registeredSales = new ArrayList<Ticket>();  
 	
 	
+	public Ticket(String gShName, TcktProdLine tcktProdLine) {
+		this.gShName = gShName;
+		this.ticketID = Ticket.ticketIDNext;
+		Ticket.ticketIDNext++;
+		this.tcktProdLine = tcktProdLine;
+		this.totalAmount = 0;
+		this.totalSaleAmount= 0;
+	}
 	
 	public Ticket(String gShName, List<TcktProdLine> prodLines) {
 		this.gShName = gShName;
 		this.ticketID = Ticket.ticketIDNext;
 		Ticket.ticketIDNext++;
-		this.prodLines = new ArrayList<TcktProdLine>();
+		this.prodLines = prodLines;
 		this.totalAmount = 0;
 		this.totalSaleAmount= 0;
 	}
@@ -70,12 +79,16 @@ public class Ticket {
 	public void addProdToTicket(int prodQuantity, Product product) {
 		TcktProdLine tcktProdLine = new TcktProdLine(prodQuantity, product);
 		setProdLines(tcktProdLine);
+		
+		calculateTotalAmount();
 	}
 	
 	public double calculateTotalAmount() {
 		double subtotal = 0;
 		subtotal = prodLines.stream().mapToDouble(TcktProdLine::getPriceXunit).sum();
 		setTotalAmount(subtotal);
+		
+		calculateTotalAmountWTax();
 		return subtotal;
 	}
 	
@@ -86,13 +99,14 @@ public class Ticket {
 		
 		totalAmountWTax = subtotal + (subtotal * tax); 
 		setTotalSaleAmount(totalAmountWTax);
+		
 		return totalAmountWTax;
 	}
 	
 	
 	@Override
 	public String toString() {
-		return  this.gShName + "\n"
+		return  "Shop name: " + this.gShName + "\n"
 				+ "Sale num: " + this.ticketID + "\n"
 				+ "Quantity\tDescription\tPrice/Unit\tTotal\n"
 				+ this.prodLines + "\n"
