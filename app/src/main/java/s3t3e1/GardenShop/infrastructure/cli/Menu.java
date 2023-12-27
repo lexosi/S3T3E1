@@ -16,11 +16,11 @@ import s3t3e1.GardenShop.domain.Ticket;
 import s3t3e1.GardenShop.domain.Tree;
 import s3t3e1.GardenShop.domain.enums.Colours;
 import s3t3e1.GardenShop.domain.enums.ProductType;
-import s3t3e1.GardenShop.infrastructure.adapter.repository.TxtGardenShopRepository;
 import s3t3e1.GardenShop.infrastructure.cli.menu.AddProdStock;
 import s3t3e1.GardenShop.infrastructure.cli.menu.CreateInvoice;
 import s3t3e1.GardenShop.infrastructure.cli.menu.MenuManagement;
 import s3t3e1.GardenShop.infrastructure.cli.menu.RemoveProdStock;
+import s3t3e1.GardenShop.infrastructure.repository.TxtGardenShopRepository;
 
 public class Menu {
 	

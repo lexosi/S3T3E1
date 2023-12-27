@@ -1,4 +1,4 @@
-package s3t3e1.GardenShop.infrastructure.adapter.repository;
+package s3t3e1.GardenShop.infrastructure.repository;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -14,13 +14,12 @@ import s3t3e1.GardenShop.domain.enums.ProductType;
 
 public class TxtGardenShopRepository implements ProductRepository, GardenShopRepository {
 
-
 	private String filePath = "GardenShop.txt";
 
 	/* PRODUCT REPOSITORY (shop stock) */
 	@Override
 	public Product save(Product product) {
-		try(FileWriter writer = new FileWriter(filePath, true)) {
+		try (FileWriter writer = new FileWriter(filePath, true)) {
 			writer.write(product.toString() + "\n");
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -41,7 +40,7 @@ public class TxtGardenShopRepository implements ProductRepository, GardenShopRep
 	@Override
 	public void delete(GardenShop gardenShop, int prodId, int quantity) {
 		Product prodFound = findProdById(gardenShop, prodId);
-		if(prodFound != null) {
+		if (prodFound != null) {
 			gardenShop.getGardenProducts().remove(prodFound, quantity);
 		} else {
 			System.out.println("Sorry, we can't delete this product. It doesn't exist in our shop's stock");
@@ -56,7 +55,7 @@ public class TxtGardenShopRepository implements ProductRepository, GardenShopRep
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 		return gardenShop;
 	}
 
@@ -81,4 +80,3 @@ public class TxtGardenShopRepository implements ProductRepository, GardenShopRep
 	}
 
 }
-

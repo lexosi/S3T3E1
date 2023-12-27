@@ -9,7 +9,7 @@ import s3t3e1.GardenShop.domain.Product;
 import s3t3e1.GardenShop.domain.Tree;
 import s3t3e1.GardenShop.domain.enums.Colours;
 import s3t3e1.GardenShop.domain.enums.ProductType;
-import s3t3e1.GardenShop.infrastructure.adapter.repository.TxtGardenShopRepository;
+import s3t3e1.GardenShop.infrastructure.repository.TxtGardenShopRepository;
 
 public class AddProdStock {
 

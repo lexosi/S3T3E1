@@ -1,7 +1,7 @@
 package s3t3e1.GardenShop.infrastructure.cli.menu;
 
 import s3t3e1.GardenShop.domain.Ticket;
-import s3t3e1.GardenShop.infrastructure.adapter.repository.TxtTicketRepository;
+import s3t3e1.GardenShop.infrastructure.repository.TxtTicketRepository;
 
 public class CreateInvoice {
 
