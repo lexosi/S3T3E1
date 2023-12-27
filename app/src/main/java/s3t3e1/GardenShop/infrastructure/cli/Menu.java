@@ -25,17 +25,22 @@ import s3t3e1.GardenShop.infrastructure.cli.menu.RemoveProdStock;
 public class Menu {
 	
     static List<GardenShop> shops = new ArrayList<GardenShop>();
+    
     GardenShop gardenShop;
     Ticket ticket;
-	CreateGardenShopService service;
+    
+    // Services (App > Port > In)
+	CreateGardenShopService createGShopService;
+	// Repositories (App > Port > Out)
 	GardenShopRepository repository;
+	// Repositories (Infrastructure > Adapter)
 	TxtGardenShopRepository txtGardenRepo;
 //	TxtTicketRepository txtTicketRepo;
 	
 	public Menu() {
 		StartDB.loadData(shops);
 //		gardenShop = new GardenShop("Bcn Garden");
-		service = new CreateGardenShopService(repository);
+		createGShopService = new CreateGardenShopService(repository);
 		txtGardenRepo = new TxtGardenShopRepository();
 //		txtTicketRepo = new TxtTicketRepository();
 	}
@@ -44,8 +49,8 @@ public class Menu {
 	public void startApp() {
 		//service.createGardenShop(name);
 		String name;
-		GardenShop resGarden;
-		
+		GardenShop gardenShop, resGarden;
+
 		if(shops.isEmpty()) {
 			name = Input_sc.enterStr("Enter the name of your Garden Shop to start the app");
 			resGarden = txtGardenRepo.findByName(shops, name);
@@ -53,6 +58,7 @@ public class Menu {
 			if(resGarden == null) {
 				gardenShop = new GardenShop(name);
 				shops.add(gardenShop);
+				createGShopService.createGardenShop(name); //create shop Service
 				txtGardenRepo.save(gardenShop); //save shop into repo
 			} else {
 				System.out.println("Your garden has already been registered");
@@ -63,7 +69,7 @@ public class Menu {
 	
 	//menu 2nd screen
 	public void start() {
-		//service.createGardenShop(name);
+		//createGShopService.createGardenShop(name);
 		menuStart();
 	}
 	
