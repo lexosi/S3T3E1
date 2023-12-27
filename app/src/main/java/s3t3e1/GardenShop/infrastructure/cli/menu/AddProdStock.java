@@ -60,6 +60,6 @@ public class AddProdStock {
 		TxtGardenShopRepository repository = new TxtGardenShopRepository();
 		AddProductService addProductService = new AddProductService(repository);
 		addProductService.addProduct(product);
-//		TxtGardenShopRepository.addProduct(product);
+		TxtGardenShopRepository.addProduct(product);
 	}
 }

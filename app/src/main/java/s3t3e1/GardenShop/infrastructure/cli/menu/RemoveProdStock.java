@@ -29,12 +29,11 @@ public class RemoveProdStock {
 		TxtGardenShopRepository repository = new TxtGardenShopRepository();
 		RemoveProductService removeProductService = new RemoveProductService(repository);
 		removeProductService.removeProduct(product);
-		// TxtGardenShopRepository.removeProduct(product);
+		TxtGardenShopRepository.removeProduct(product);
 	}
 
 	public static int findProdById(GardenShop gardenShop, int prodId) {
-		// products product ->id
-
+		
 		gardenShop.findKeys().stream().filter(p -> p.getId() == prodId);
 
 		for (Product product : gardenShop.findKeys()) {

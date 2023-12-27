@@ -29,28 +29,38 @@ public class Menu {
     Ticket ticket;
 	CreateGardenShopService service;
 	GardenShopRepository repository;
-//	TxtGardenShopRepository txtGardenRepo;
+	TxtGardenShopRepository txtGardenRepo;
 //	TxtTicketRepository txtTicketRepo;
 	
 	public Menu() {
 		StartDB.loadData(shops);
 //		gardenShop = new GardenShop("Bcn Garden");
 		service = new CreateGardenShopService(repository);
-//		txtGardenRepo = new TxtGardenShopRepository();
+		txtGardenRepo = new TxtGardenShopRepository();
 //		txtTicketRepo = new TxtTicketRepository();
 	}
 	  
-	//menu
+	//menu 1st screen
 	public void startApp() {
 		//service.createGardenShop(name);
 		String name;
+		GardenShop resGarden;
+		
 		if(shops.isEmpty()) {
 			name = Input_sc.enterStr("Enter the name of your Garden Shop to start the app");
-			gardenShop = new GardenShop(name);
-			shops.add(gardenShop);
+			resGarden = txtGardenRepo.findByName(shops, name);
+			
+			if(resGarden == null) {
+				gardenShop = new GardenShop(name);
+				shops.add(gardenShop);
+				txtGardenRepo.save(gardenShop); //save shop into repo
+			} else {
+				System.out.println("Your garden has already been registered");
+			}	
 		}
 		System.out.println("Welcome to the Garden Shop App Menu");
 	}
+	
 	//menu 2nd screen
 	public void start() {
 		//service.createGardenShop(name);

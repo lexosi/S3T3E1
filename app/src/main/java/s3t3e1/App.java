@@ -6,10 +6,7 @@ package s3t3e1;
 import s3t3e1.GardenShop.infrastructure.cli.Menu;
 
 public class App {
-    public String getGreeting() {
-        return "Hello World!";
-    }
-
+   
     public static void main(String[] args) {
 	
 		Menu menu = new Menu();

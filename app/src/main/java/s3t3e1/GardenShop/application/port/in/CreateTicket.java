@@ -6,6 +6,4 @@ public interface CreateTicket {
 
 	Ticket createTicket();
 
-		
-
 }
