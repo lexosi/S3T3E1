@@ -23,7 +23,7 @@ public class Ticket {
 		this.gShName = gShName;
 		this.ticketID = Ticket.ticketIDNext;
 		Ticket.ticketIDNext++;
-		this.tcktProdLine = tcktProdLine;
+		this.ticktProdLine = tcktProdLine;
 		this.totalAmount = 0;
 		this.totalSaleAmount= 0;
 	}
