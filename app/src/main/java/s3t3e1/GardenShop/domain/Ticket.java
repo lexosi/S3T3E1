@@ -1,7 +1,6 @@
 package s3t3e1.GardenShop.domain;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 
@@ -11,7 +10,7 @@ public class Ticket {
 //	private(String/int?? LocalDateTime) ticketDate;
 	private int ticketID;
 	private static int ticketIDNext;
-	private TcktProdLine tcktProdLine;
+	private TcktProdLine ticktProdLine;
 	List<TcktProdLine> prodLines  = new ArrayList<TcktProdLine>(); // save product lines in ticket
 	private double totalAmount; // subtotal (sum of all products)
 	private double totalSaleAmount;	// total ticket amount (with tax applied)
