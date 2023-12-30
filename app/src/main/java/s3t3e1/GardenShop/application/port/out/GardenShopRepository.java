@@ -8,6 +8,7 @@ public interface GardenShopRepository {
 	
     GardenShop save(GardenShop gardenShop);
     GardenShop findByName(List<GardenShop> shops, String name);
-    void delete(List<GardenShop> shops, GardenShop gardenShop);
+    void delete(GardenShop gardenShop);
+//    void delete(List<GardenShop> shops, GardenShop gardenShop);
     
 }
