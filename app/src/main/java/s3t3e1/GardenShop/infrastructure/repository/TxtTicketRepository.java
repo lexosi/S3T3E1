@@ -15,8 +15,8 @@ import s3t3e1.GardenShop.domain.Ticket;
 
 public class TxtTicketRepository implements TicketRepository {
 
-	private static String dataPath;
-	private static String ticketFile = dataPath + "tickets.txt";
+	// private static String dataPath;
+	// private static String ticketFile = dataPath + "tickets.txt";
 
 	private String filePath = "data/tickets.txt";
 
