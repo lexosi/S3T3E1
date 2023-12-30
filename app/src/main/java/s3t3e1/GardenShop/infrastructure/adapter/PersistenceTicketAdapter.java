@@ -18,7 +18,6 @@ public class PersistenceTicketAdapter implements s3t3e1.GardenShop.application.p
     @Override
     public List<Ticket> obtainTickets() {
         // Aquí se implementaría la lógica para leer los tickets desde el archivo.
-        // Como este es un ejemplo, se deja sin implementar.
         return null;
     }
 }
